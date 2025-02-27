@@ -48,6 +48,8 @@ function App() {
         {/* Mostra i risultati */}
         {movies.map((movie) => (
           <div key={movie.id}>
+            {/* immagine copertina */}
+            <img src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt="" />
             <h2>{movie.title}</h2>
             <p>{movie.original_title}</p>
 
@@ -73,8 +75,8 @@ function App() {
               <p>{movie.original_language}</p>
             )}
 
-
             <p>{movie.vote_average}</p>
+
           </div>
         ))}
       </div>
