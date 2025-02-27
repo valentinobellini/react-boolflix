@@ -81,11 +81,11 @@ function App() {
 
             {/* rating */}
             <p>
-              {Math.ceil(movie.vote_average / 2) >= 1 && <FontAwesomeIcon icon={faStar} />}
-              {Math.ceil(movie.vote_average / 2) >= 2 && <FontAwesomeIcon icon={faStar} />}
-              {Math.ceil(movie.vote_average / 2) >= 3 && <FontAwesomeIcon icon={faStar} />}
-              {Math.ceil(movie.vote_average / 2) >= 4 && <FontAwesomeIcon icon={faStar} />}
-              {Math.ceil(movie.vote_average / 2) >= 5 && <FontAwesomeIcon icon={faStar} />}
+              {Math.ceil(movie.vote_average / 2) >= 1 && <FontAwesomeIcon className="star" icon={faStar} />}
+              {Math.ceil(movie.vote_average / 2) >= 2 && <FontAwesomeIcon className="star" icon={faStar} />}
+              {Math.ceil(movie.vote_average / 2) >= 3 && <FontAwesomeIcon className="star" icon={faStar} />}
+              {Math.ceil(movie.vote_average / 2) >= 4 && <FontAwesomeIcon className="star" icon={faStar} />}
+              {Math.ceil(movie.vote_average / 2) >= 5 && <FontAwesomeIcon className="star" icon={faStar} />}
             </p>
 
           </div>
@@ -134,11 +134,11 @@ function App() {
 
             {/* rating */}
             <p>
-              {Math.ceil(serie.vote_average / 2) >= 1 && <FontAwesomeIcon icon={faStar} />}
-              {Math.ceil(serie.vote_average / 2) >= 2 && <FontAwesomeIcon icon={faStar} />}
-              {Math.ceil(serie.vote_average / 2) >= 3 && <FontAwesomeIcon icon={faStar} />}
-              {Math.ceil(serie.vote_average / 2) >= 4 && <FontAwesomeIcon icon={faStar} />}
-              {Math.ceil(serie.vote_average / 2) >= 5 && <FontAwesomeIcon icon={faStar} />}
+              {Math.ceil(serie.vote_average / 2) >= 1 && <FontAwesomeIcon className="star" icon={faStar} />}
+              {Math.ceil(serie.vote_average / 2) >= 2 && <FontAwesomeIcon className="star" icon={faStar} />}
+              {Math.ceil(serie.vote_average / 2) >= 3 && <FontAwesomeIcon className="star" icon={faStar} />}
+              {Math.ceil(serie.vote_average / 2) >= 4 && <FontAwesomeIcon className="star" icon={faStar} />}
+              {Math.ceil(serie.vote_average / 2) >= 5 && <FontAwesomeIcon className="star" icon={faStar} />}
             </p>
           </div>
         ))}
