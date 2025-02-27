@@ -58,7 +58,7 @@ function App() {
             {movie.original_language === 'ja' && (
               <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/jp.svg" alt="Deutsche Flagge" />
             )}
-            {!movie.original_language && (
+            {!['en', 'it', 'es', 'fr', 'de', 'ja'].includes(movie.original_language) && (
               <p>{movie.original_language}</p>
             )}
 
