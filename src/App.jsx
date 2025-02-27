@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+
 function App() {
 
 
@@ -33,6 +36,7 @@ function App() {
       {/* render movies list */}
       <h1>hello world</h1>
 
+
       <div>
         <input
           type="text"
@@ -49,7 +53,7 @@ function App() {
         {movies.map((movie) => (
           <div key={movie.id}>
             {/* immagine copertina */}
-            <img src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt="" />
+            <img src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt="movie.title" />
             <h2>{movie.title}</h2>
             <p>{movie.original_title}</p>
 
@@ -75,7 +79,14 @@ function App() {
               <p>{movie.original_language}</p>
             )}
 
-            <p>{movie.vote_average}</p>
+            {/* rating */}
+            <p>
+              {Math.ceil(movie.vote_average / 2) >= 1 && <FontAwesomeIcon icon={faStar} />}
+              {Math.ceil(movie.vote_average / 2) >= 2 && <FontAwesomeIcon icon={faStar} />}
+              {Math.ceil(movie.vote_average / 2) >= 3 && <FontAwesomeIcon icon={faStar} />}
+              {Math.ceil(movie.vote_average / 2) >= 4 && <FontAwesomeIcon icon={faStar} />}
+              {Math.ceil(movie.vote_average / 2) >= 5 && <FontAwesomeIcon icon={faStar} />}
+            </p>
 
           </div>
         ))}
@@ -93,6 +104,8 @@ function App() {
         {/* Mostra i risultati */}
         {series.map((serie) => (
           <div key={serie.id}>
+            {/* immagine copertina */}
+            <img src={`https://image.tmdb.org/t/p/w342/${serie.poster_path}`} alt="serie.title" />
             <h2>{serie.name}</h2>
             <p>{serie.original_name}</p>
 
@@ -119,7 +132,14 @@ function App() {
             )}
 
 
-            <p>{serie.vote_average}</p>
+            {/* rating */}
+            <p>
+              {Math.ceil(serie.vote_average / 2) >= 1 && <FontAwesomeIcon icon={faStar} />}
+              {Math.ceil(serie.vote_average / 2) >= 2 && <FontAwesomeIcon icon={faStar} />}
+              {Math.ceil(serie.vote_average / 2) >= 3 && <FontAwesomeIcon icon={faStar} />}
+              {Math.ceil(serie.vote_average / 2) >= 4 && <FontAwesomeIcon icon={faStar} />}
+              {Math.ceil(serie.vote_average / 2) >= 5 && <FontAwesomeIcon icon={faStar} />}
+            </p>
           </div>
         ))}
       </div>
