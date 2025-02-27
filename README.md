@@ -21,3 +21,14 @@ Pages -- HomePage, ResultsPage
 
 Components -- Header[Logo, SearchBar], ResultsList, ResultCard, Footer
 
+
+Components Structure:
+Header -
+Logo -- h1
+SearchBar -- input, button
+
+ResultsList --
+
+ResultCard --
+ 
+Footer --
