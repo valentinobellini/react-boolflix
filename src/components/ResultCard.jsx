@@ -48,21 +48,23 @@ export default function ResultsCard({ data }) {
     const flagCode = getFlagCode(language);
 
     return (
-        <div key={data.id}>
+        <div className='card' key={data.id}>
             {/* Immagine copertina */}
             <img src={`https://image.tmdb.org/t/p/w342/${imagePath}`} alt={title} />
-            <h2>{title}</h2>
-            <p>{originalTitle}</p>
+            <div className="card-infos">
+                <h2>{title}</h2>
+                <p>{originalTitle}</p>
 
-            {/* Bandiera */}
-            {flagCode ? (
-                <img className='flag' src={`https://flagicons.lipis.dev/flags/4x3/${flagCode}.svg`} alt={`Bandiera ${flagCode}`} />
-            ) : (
-                <p>{language}</p>
-            )}
+                {/* flag */}
+                {flagCode ? (
+                    <img className='flag' src={`https://flagicons.lipis.dev/flags/4x3/${flagCode}.svg`} alt={`Bandiera ${flagCode}`} />
+                ) : (
+                    <p>{language}</p>
+                )}
 
-            {/* Rating */}
-            <p>{calculateRating()}</p>
+                {/* Rating */}
+                <p>{calculateRating()}</p>
+            </div>
         </div>
     );
 }

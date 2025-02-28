@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import GlobalContext from './../contexts/GlobalContext'
 
 // funzione per intercettare Ctrl + Enter all'interno del text area e inviare il form
@@ -6,11 +7,19 @@ const handleKeyDown = (event, fetchResults) => {
     if (event.key === "Enter" && event.ctrlKey) {
         event.preventDefault(); // Evita di andare a capo
         fetchResults(event); // Invia il form
+
     }
 };
 
 export default function SearchBar() {
     const { query, setQuery, fetchResults } = useContext(GlobalContext);
+
+    const navigate = useNavigate();
+
+    const handleSearch = () => {
+        fetchResults();
+        navigate("/lists");
+    };
 
     return (
         <div className="searchbar">
@@ -18,11 +27,11 @@ export default function SearchBar() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={(e) => handleKeyDown(e, fetchResults)}
+                onKeyDown={(e) => handleKeyDown(e, handleSearch)}
             />
             <button
                 type="submit"
-                onClick={fetchResults}
+                onClick={handleSearch}
             >
                 Cerca
             </button>

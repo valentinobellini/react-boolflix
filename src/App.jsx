@@ -7,12 +7,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GlobalContext from './contexts/GlobalContext';
 
 
+// importa layout
+import MainLayout from './layouts/MainLayout'
 
+//  import pages
+import HomePage from './pages/HomePage'
+import ListsPage from './pages/ListsPage'
 
-// importa componenti
-import Header from './components/Header'
-import Footer from './components/Footer'
-import ResultsList from './components/ResultsList'
 
 
 
@@ -35,7 +36,8 @@ function App() {
       .then(axios.spread((movieRes, tvRes) => {
         setMovies(movieRes.data.results);
         setSeries(tvRes.data.results);
-        setState('');
+        setQuery('');
+
       }))
       .catch((err) => {
         console.log(err);
@@ -46,12 +48,16 @@ function App() {
   return (
     <>
       <GlobalContext.Provider value={{ query, movies, series, setQuery, fetchResults }}>
+        <Router>
+          <Routes>
 
-        <Header></Header>
-        <ResultsList></ResultsList>
+            <Route path="/" element={<MainLayout />} >
+              <Route index element={<HomePage />} />
+              <Route path="/lists" element={<ListsPage />} />
+            </Route>
 
-        <Footer></Footer>
-
+          </Routes>
+        </Router>
       </GlobalContext.Provider>
     </>
   );
