@@ -1,8 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-
-// Funzione per ottenere il codice del paese dalla lingua
+// Funzione per ottenere il codice della bandiera
 const getFlagCode = (languageCode) => {
     const languageToCountry = {
         'en': 'gb',
@@ -12,16 +11,22 @@ const getFlagCode = (languageCode) => {
         'de': 'de',
         'ja': 'jp',
     };
-    return languageToCountry[languageCode] || null; // Restituisce null se non trova la lingua
+    return languageToCountry[languageCode] || null;
 };
 
+export default function ResultsCard({ data }) {
+    // Determina se è un film o una serie
+    const isMovie = data.hasOwnProperty("title");
 
-export default function ResultsCard({ movie }) {
+    // Estrai i dati corretti
+    const title = isMovie ? data.title : data.name;
+    const originalTitle = isMovie ? data.original_title : data.original_name;
+    const imagePath = data.poster_path;
+    const language = data.original_language;
+    const rating = Math.ceil(data.vote_average / 2);
 
 
     // logica rating
-    const rating = Math.ceil(movie.vote_average / 2);
-
     function calculateRating() {
 
         const stars = [];
@@ -40,27 +45,24 @@ export default function ResultsCard({ movie }) {
     }
 
     // Ottiene il codice della bandiera
-    const flagCode = getFlagCode(movie.original_language);
+    const flagCode = getFlagCode(language);
 
     return (
-        <div key={movie.id}>
-            {/* immagine copertina */}
-            <img src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt={movie.title} />
-            <h2>{movie.title}</h2>
-            <p>{movie.original_title}</p>
+        <div key={data.id}>
+            {/* Immagine copertina */}
+            <img src={`https://image.tmdb.org/t/p/w342/${imagePath}`} alt={title} />
+            <h2>{title}</h2>
+            <p>{originalTitle}</p>
 
+            {/* Bandiera */}
             {flagCode ? (
                 <img className='flag' src={`https://flagicons.lipis.dev/flags/4x3/${flagCode}.svg`} alt={`Bandiera ${flagCode}`} />
             ) : (
-                <p>{movie.original_language}</p>
+                <p>{language}</p>
             )}
 
-            {/* rating */}
-
-            <p>
-                {calculateRating()}
-            </p>
-
+            {/* Rating */}
+            <p>{calculateRating()}</p>
         </div>
     );
 }
