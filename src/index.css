@@ -41,7 +41,7 @@ h1 {
 }
 
 .searchbar-wrapper {
-    width: 20%;
+    width: 400px;
 }
 
 .searchbar:focus {

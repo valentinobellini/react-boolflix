@@ -51,8 +51,8 @@ function App() {
         <Router>
           <Routes>
 
-            <Route path="/" element={<MainLayout />} >
-              <Route index element={<HomePage />} />
+            <Route element={<MainLayout />} >
+              <Route path="/" element={<HomePage />} />
               <Route path="/lists" element={<ListsPage />} />
             </Route>
 
