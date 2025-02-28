@@ -12,7 +12,7 @@ export default function ResultsList() {
 
     return (
         <>
-            <div className="results-list-container">
+            <div className="movies-list-container">
                 {movies.length > 0 && <h2 className="list-title">Movies:</h2>}
 
                 <div className="results-list">
@@ -22,7 +22,7 @@ export default function ResultsList() {
                 </div>
             </div>
 
-            <div className="results-list-container">
+            <div className="series-list-container">
                 {series.length > 0 && <h2 className="list-title">Series:</h2>}
 
                 <div className="results-list">

@@ -22,14 +22,16 @@ export default function SearchBar() {
     };
 
     return (
-        <div className="searchbar">
+        <div className="searchbar-wrapper">
             <input
+                className="searchbar"
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => handleKeyDown(e, handleSearch)}
             />
             <button
+                className="searchbar-button"
                 type="submit"
                 onClick={handleSearch}
             >

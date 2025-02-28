@@ -9,8 +9,10 @@ export default function Header() {
     return (
         <>
             <header>
-                <Logo />
-                <SearchBar />
+                <div className="header-wrapper">
+                    <Logo />
+                    <SearchBar />
+                </div>
             </header>
 
         </>

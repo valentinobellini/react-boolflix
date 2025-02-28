@@ -10,22 +10,63 @@ body {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
+
     background-color: black;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
 }
 
-.logo {
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 98%;
+}
+
+
+h1 {
     color: red;
+    font-size: 2.5rem;
+    font-weight: 100;
 }
 
+.searchbar-wrapper {
+    width: 20%;
+}
+
+.searchbar {
+    width: 70%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 1.2rem;
+    margin-right: 20px;
+}
+
+.searchbar-button {
+    height: 30px;
+    width: 80px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.searchbar input {}
 
 
 
-.results-list-container {
+
+.movies-list-container {
     margin-top: 30px;
 }
 
+.series-list-container {
+    margin-top: 60px;
+}
 
 .results-list {
     display: flex;
@@ -34,6 +75,13 @@ header {
     flex-wrap: wrap;
     gap: 20px;
     margin-top: 30px;
+}
+
+
+.list-title {
+    color: rgb(0, 0, 0);
+    background-color: red;
+    padding-left: 20px;
 }
 
 
@@ -67,9 +115,7 @@ footer {
 }
 
 
-.list-title {
-    background-color: red;
-}
+
 
 
 .star {
