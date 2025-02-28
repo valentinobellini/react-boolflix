@@ -15,9 +15,9 @@ STRUTTURA PAGINA
 
 Contexts -- GlobalContext
 
-Layout -- MainLayout (header, HomePage, ResultsPage, Footer)
+Layout -- MainLayout (header, HomePage, ListsPage, Footer)
 
-Pages -- HomePage, ResultsPage
+Pages -- HomePage, ListsPage
 
 Components -- Header[Logo, SearchBar], ResultsList, ResultCard, Footer
 

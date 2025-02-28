@@ -1,8 +1,21 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+// importo elementi react-router-dom
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// importa il provider
+import GlobalContext from './contexts/GlobalContext';
+
+
+
+
+// importa componenti
+import Header from './components/Header'
+import Footer from './components/Footer'
+import ResultsList from './components/ResultsList'
+
+
+
 
 function App() {
 
@@ -32,117 +45,14 @@ function App() {
 
   return (
     <>
+      <GlobalContext.Provider value={{ query, movies, series, setQuery, fetchResults }}>
 
-      {/* render movies list */}
-      <h1>hello world</h1>
+        <Header></Header>
+        <ResultsList></ResultsList>
 
+        <Footer></Footer>
 
-      <div>
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button onClick={fetchResults}>Cerca</button>
-
-      </div>
-
-      <div>
-        {movies.length > 0 && <h2 className='list-title' >Movies:</h2>}
-        {/* Mostra i risultati */}
-        {movies.map((movie) => (
-          <div key={movie.id}>
-            {/* immagine copertina */}
-            <img src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`} alt="movie.title" />
-            <h2>{movie.title}</h2>
-            <p>{movie.original_title}</p>
-
-            {movie.original_language === 'en' && (
-              <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/gb.svg" alt="Flag of English" />
-            )}
-            {movie.original_language === 'it' && (
-              <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/it.svg" alt="Bandiera italiana" />
-            )}
-            {movie.original_language === 'es' && (
-              <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/es.svg" alt="Bandera española" />
-            )}
-            {movie.original_language === 'fr' && (
-              <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/fr.svg" alt="Drapeau français" />
-            )}
-            {movie.original_language === 'de' && (
-              <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/de.svg" alt="Deutsche Flagge" />
-            )}
-            {movie.original_language === 'ja' && (
-              <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/jp.svg" alt="Deutsche Flagge" />
-            )}
-            {!['en', 'it', 'es', 'fr', 'de', 'ja'].includes(movie.original_language) && (
-              <p>{movie.original_language}</p>
-            )}
-
-            {/* rating */}
-            <p>
-              {Math.ceil(movie.vote_average / 2) >= 1 && <FontAwesomeIcon className="star" icon={faStar} />}
-              {Math.ceil(movie.vote_average / 2) >= 2 && <FontAwesomeIcon className="star" icon={faStar} />}
-              {Math.ceil(movie.vote_average / 2) >= 3 && <FontAwesomeIcon className="star" icon={faStar} />}
-              {Math.ceil(movie.vote_average / 2) >= 4 && <FontAwesomeIcon className="star" icon={faStar} />}
-              {Math.ceil(movie.vote_average / 2) >= 5 && <FontAwesomeIcon className="star" icon={faStar} />}
-            </p>
-
-          </div>
-        ))}
-      </div>
-
-
-
-
-
-
-      {/* render series list */}
-
-      <div>
-        {series.length > 0 && <h2 className='list-title' >Series:</h2>}
-        {/* Mostra i risultati */}
-        {series.map((serie) => (
-          <div key={serie.id}>
-            {/* immagine copertina */}
-            <img src={`https://image.tmdb.org/t/p/w342/${serie.poster_path}`} alt="serie.title" />
-            <h2>{serie.name}</h2>
-            <p>{serie.original_name}</p>
-
-            {serie.original_language === 'en' && (
-              <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/gb.svg" alt="Flag of English" />
-            )}
-            {serie.original_language === 'it' && (
-              <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/it.svg" alt="Bandiera italiana" />
-            )}
-            {serie.original_language === 'es' && (
-              <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/es.svg" alt="Bandera española" />
-            )}
-            {serie.original_language === 'fr' && (
-              <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/fr.svg" alt="Drapeau français" />
-            )}
-            {serie.original_language === 'de' && (
-              <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/de.svg" alt="Deutsche Flagge" />
-            )}
-            {serie.original_language === 'ja' && (
-              <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/jp.svg" alt="Deutsche Flagge" />
-            )}
-            {!['en', 'it', 'es', 'fr', 'de', 'ja'].includes(serie.original_language) && (
-              <p>{serie.original_language}</p>
-            )}
-
-
-            {/* rating */}
-            <p>
-              {Math.ceil(serie.vote_average / 2) >= 1 && <FontAwesomeIcon className="star" icon={faStar} />}
-              {Math.ceil(serie.vote_average / 2) >= 2 && <FontAwesomeIcon className="star" icon={faStar} />}
-              {Math.ceil(serie.vote_average / 2) >= 3 && <FontAwesomeIcon className="star" icon={faStar} />}
-              {Math.ceil(serie.vote_average / 2) >= 4 && <FontAwesomeIcon className="star" icon={faStar} />}
-              {Math.ceil(serie.vote_average / 2) >= 5 && <FontAwesomeIcon className="star" icon={faStar} />}
-            </p>
-          </div>
-        ))}
-      </div>
+      </GlobalContext.Provider>
     </>
   );
 }
