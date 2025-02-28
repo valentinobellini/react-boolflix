@@ -17,10 +17,11 @@ const getFlagCode = (languageCode) => {
 export default function ResultsCard({ data }) {
     // Determina se è un film o una serie
     const isMovie = data.hasOwnProperty("title");
+    const isTrending = data.hasOwnProperty("name");
 
     // Estrai i dati corretti
     const title = isMovie ? data.title : data.name;
-    const originalTitle = isMovie ? data.original_title : data.original_name;
+    const originalTitle = isMovie || isTrending ? data.original_title || data.original_name : null;
     const imagePath = data.poster_path;
     const language = data.original_language;
     const rating = Math.ceil(data.vote_average / 2);

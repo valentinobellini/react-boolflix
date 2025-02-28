@@ -7,9 +7,13 @@ import Footer from "./../components/Footer";
 export default function MainLayout() {
     return (
         <>
-            <Header />
-            <Outlet />
-            <Footer />
+            <div className="layout">
+                <Header />
+                <main className="main">
+                    <Outlet />
+                </main>
+                <Footer />
+            </div>
         </>
     );
 }

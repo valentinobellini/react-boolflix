@@ -29,6 +29,8 @@ export default function SearchBar() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => handleKeyDown(e, handleSearch)}
+                placeholder="Cerca un film o una serie..."
+
             />
             <button
                 className="searchbar-button"

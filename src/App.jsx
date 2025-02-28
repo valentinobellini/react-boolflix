@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // importo elementi react-router-dom
@@ -24,6 +24,8 @@ function App() {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [series, setSeries] = useState([]);
+  const [trending, setTrending] = useState([]);
+
 
 
   // chiamata API movies
@@ -31,11 +33,13 @@ function App() {
 
     const movieRequest = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=33dd7e4bd707ec9911740ceb7d4fa3c7&language=it_IT&query=${query}`);
     const tvRequest = axios.get(`https://api.themoviedb.org/3/search/tv?api_key=33dd7e4bd707ec9911740ceb7d4fa3c7&language=it_IT&query=${query}`);
+    const trendingRequest = axios.get('https://api.themoviedb.org/3/trending/all/day?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT')
 
-    axios.all([movieRequest, tvRequest])
-      .then(axios.spread((movieRes, tvRes) => {
+    axios.all([movieRequest, tvRequest, trendingRequest])
+      .then(axios.spread((movieRes, tvRes, trendingRes) => {
         setMovies(movieRes.data.results);
         setSeries(tvRes.data.results);
+        setTrending(trendingRes.data.results);
         setQuery('');
 
       }))
@@ -45,9 +49,13 @@ function App() {
   }
 
 
+  useEffect(() => {
+    fetchResults();
+  }, []);
+
   return (
     <>
-      <GlobalContext.Provider value={{ query, movies, series, setQuery, fetchResults }}>
+      <GlobalContext.Provider value={{ query, setQuery, movies, series, trending, fetchResults }}>
         <Router>
           <Routes>
 
