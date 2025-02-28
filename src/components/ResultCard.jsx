@@ -24,6 +24,7 @@ export default function ResultsCard({ data }) {
     const imagePath = data.poster_path;
     const language = data.original_language;
     const rating = Math.ceil(data.vote_average / 2);
+    const overview = data.overview
 
 
     // logica rating
@@ -50,7 +51,7 @@ export default function ResultsCard({ data }) {
     return (
         <div className='card' key={data.id}>
             {/* Immagine copertina */}
-            <img src={`https://image.tmdb.org/t/p/w342/${imagePath}`} alt={title} />
+            <img className='card-img' src={`https://image.tmdb.org/t/p/w342/${imagePath}`} alt={title} />
             <div className="card-infos">
                 <h2>{title}</h2>
                 <p>{originalTitle}</p>
@@ -64,6 +65,10 @@ export default function ResultsCard({ data }) {
 
                 {/* Rating */}
                 <p>{calculateRating()}</p>
+
+                <p className="overview">
+                    {overview}
+                </p>
             </div>
         </div>
     );

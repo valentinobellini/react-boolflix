@@ -109,8 +109,13 @@ h1 {
     width: 100%;
     padding: 10px;
     z-index: 2;
+    color: white;
 }
 
+.card:hover .card-img {
+    filter: brightness(0.2);
+
+}
 
 .card:hover .card-infos {
     display: block;
