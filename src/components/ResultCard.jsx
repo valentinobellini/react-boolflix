@@ -2,11 +2,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 
+// Funzione per ottenere il codice del paese dalla lingua
+const getFlagCode = (languageCode) => {
+    const languageToCountry = {
+        'en': 'gb',
+        'it': 'it',
+        'fr': 'fr',
+        'es': 'es',
+        'de': 'de',
+        'ja': 'jp',
+    };
+    return languageToCountry[languageCode] || null; // Restituisce null se non trova la lingua
+};
+
+
 export default function ResultsCard({ movie }) {
 
 
     // logica rating
-
     const rating = Math.ceil(movie.vote_average / 2);
 
     function calculateRating() {
@@ -26,7 +39,8 @@ export default function ResultsCard({ movie }) {
         return stars;
     }
 
-
+    // Ottiene il codice della bandiera
+    const flagCode = getFlagCode(movie.original_language);
 
     return (
         <div key={movie.id}>
@@ -35,25 +49,9 @@ export default function ResultsCard({ movie }) {
             <h2>{movie.title}</h2>
             <p>{movie.original_title}</p>
 
-            {movie.original_language === 'en' && (
-                <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/gb.svg" alt="Flag of English" />
-            )}
-            {movie.original_language === 'it' && (
-                <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/it.svg" alt="Bandiera italiana" />
-            )}
-            {movie.original_language === 'es' && (
-                <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/es.svg" alt="Bandera española" />
-            )}
-            {movie.original_language === 'fr' && (
-                <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/fr.svg" alt="Drapeau français" />
-            )}
-            {movie.original_language === 'de' && (
-                <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/de.svg" alt="Deutsche Flagge" />
-            )}
-            {movie.original_language === 'ja' && (
-                <img className='flag' src="https://flagicons.lipis.dev/flags/4x3/jp.svg" alt="Deutsche Flagge" />
-            )}
-            {!['en', 'it', 'es', 'fr', 'de', 'ja'].includes(movie.original_language) && (
+            {flagCode ? (
+                <img className='flag' src={`https://flagicons.lipis.dev/flags/4x3/${flagCode}.svg`} alt={`Bandiera ${flagCode}`} />
+            ) : (
                 <p>{movie.original_language}</p>
             )}
 
