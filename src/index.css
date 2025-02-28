@@ -9,6 +9,9 @@ body {
     background-color: rgb(63, 63, 63);
 }
 
+
+
+/* header style */
 header {
 
     background-color: black;
@@ -55,11 +58,12 @@ h1 {
     font-size: 1.2rem;
 }
 
-.searchbar input {}
 
 
 
 
+
+/* lists page style */
 .movies-list-container {
     margin-top: 30px;
 }
@@ -85,13 +89,31 @@ h1 {
 }
 
 
+
+
+/* cards style */
 .card {
     width: 342px;
+    position: relative;
+    overflow: hidden;
 }
 
 
 .card-infos {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: none;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    z-index: 2;
+}
+
+
+.card:hover .card-infos {
+    display: block;
 }
 
 
