@@ -54,7 +54,7 @@ export default function ResultsCard({ data }) {
             <img className='card-img' src={`https://image.tmdb.org/t/p/w342/${imagePath}`} alt={title} />
             <div className="card-infos">
                 <h2>{title}</h2>
-                <p>{originalTitle}</p>
+                <h4>{originalTitle}</h4>
 
                 {/* flag */}
                 {flagCode ? (
