@@ -154,18 +154,20 @@ header {
     display: none;
     text-align: center;
     width: 100%;
-    padding: 10px;
+    padding: 20px 50px;
     z-index: 2;
     color: white;
     /* padding: 20px; */
 }
 
+.card-infos h2 {
+    margin-bottom: 10px;
+}
 
-.card-infos h2,
 .card-infos h4,
 .card-infos p,
 .card-infos img {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 
