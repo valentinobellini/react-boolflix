@@ -23,6 +23,7 @@ body {
     flex-grow: 1;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -62,10 +63,11 @@ header {
 }
 
 
-h1 {
+.logo {
     color: red;
     font-size: 2.5rem;
     font-weight: 100;
+    text-decoration: none;
 }
 
 .searchbar-wrapper {
@@ -127,7 +129,10 @@ h1 {
 .list-title {
     color: rgb(0, 0, 0);
     background-color: red;
+    height: 40px;
     padding-left: 20px;
+    display: flex;
+    align-items: center;
 }
 
 

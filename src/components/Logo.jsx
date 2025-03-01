@@ -1,9 +1,11 @@
+import { NavLink } from "react-router-dom";
+
 export default function Logo() {
 
 
     return (
         <>
-            <h1>BOOFLIX</h1>
+            <NavLink className={'logo'} to='/'>BOOLFLIX</NavLink>
         </>
     )
 }
